@@ -1,0 +1,211 @@
+@import "normalize.css";
+
+body {
+    font: 1em/1.6em sans-serif;
+    color: #353535;
+    background: #aaa;
+}
+
+a {
+    text-decoration: none;
+}
+
+.main {
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/*Стили для слайдера*/
+
+.sl__slide {
+    position: relative;
+}
+
+.sl__text {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+    padding: 20px 0;
+}
+
+.sl__caption, .sl__description {
+    margin: 0;
+    padding: 0 10px;
+}
+
+.sl2 {
+    margin: 40px 0 0;
+}
+
+.sl2__slide {
+    margin: 0 7px;
+    outline: none;
+}
+
+.sl2__slide img {
+    padding: 3px;
+    background: #464646;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background .3s;
+}
+
+.sl2__slide img:hover,
+.slick-current img {
+    background: #ffffff;
+}
+
+.sl2 .slick-dots {
+    bottom: -35px;
+}
+
+.slick-dots li button {
+    border: 2px solid #777;
+    border-radius: 50%;
+    box-shadow: 1px 1px 3px -1px rgba(0, 0, 0, .2);
+    transition: border-color .3s;
+}
+
+.slick-dots li button:before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #777777;
+    opacity: 1;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    margin: -5px 0 0 -5px;
+    transition: background .3s;
+
+}
+
+.slick-dots li.slick-active button,
+.slick-dots li button:hover {
+    border-color: #ffffff;
+}
+
+.slick-dots li.slick-active button:before,
+.slick-dots li button:hover:before {
+    background: #fff;
+
+}
+
+.slick-prev,
+.slick-next {
+    z-index: 1001;
+    width: 32px;
+    height: 32px;
+}
+
+.slick-prev {
+    left: 25px;
+
+}
+
+.slick-next {
+    right: 25px;
+}
+
+.slick-prev:before, .slick-next:before {
+    font-size: 32px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
+}
+
+/*Адаптивность картинок и видео*/
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.vidres {
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+}
+
+.vidres iframe, .vidres embed, .vidres object {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/*Используется для центрирования контента*/
+.mid {
+    max-width: 1170px; /*Укажите своё значение*/
+    margin: 0 auto;
+}
+
+/*Колонки - задаём свои, если чего то не хватает
+  по умолчанию используется расстояние в 4% между колонками*/
+.col25, .col33, .col50 {
+    float: left;
+    margin: 0 4% 0 0;
+}
+
+.col25 { /*4 в ряд*/
+    width: 22%;
+}
+
+.col33 { /*3 в ряд*/
+    width: 30.6666666%;
+}
+
+.col50 { /*2 в ряд*/
+    width: 48%;
+}
+
+.col25:last-child,
+.col33:last-child,
+.col50:last-child {
+    margin: 0;
+}
+
+/*Очистка обтекания*/
+.mid:before, .cf:before, .mid:after, .cf:after {
+    content: " ";
+    display: table;
+}
+
+.mid:after, .cf:after {
+    clear: both;
+}
+
+/*Адаптивность*/
+@media screen and (max-width: 1200px) {
+    .mid {
+        margin: 0 40px;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .col25 {
+        width: 50%;
+    }
+
+    .col25:nth-child(even) {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .mid {
+        margin: 0 20px;
+    }
+
+    .col25, .col33, .col50 {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+}
