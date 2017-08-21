@@ -43,7 +43,6 @@ $('.sl2').slick({
             settings: {
                 dots: false,
                 slidesToShow: 3,
-                centerMode: false
             }
         }
     ]
