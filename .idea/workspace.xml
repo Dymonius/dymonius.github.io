@@ -30,8 +30,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Resume/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+            <state relative-caret-position="187">
+              <caret line="11" column="56" lean-forward="false" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -157,7 +157,7 @@
       <workItem from="1502383245337" duration="2086000" />
       <workItem from="1502460687107" duration="599000" />
       <workItem from="1503355881994" duration="909000" />
-      <workItem from="1504178747176" duration="1780000" />
+      <workItem from="1504178747176" duration="1850000" />
     </task>
     <task id="LOCAL-00001" summary="second site was added">
       <created>1501282421837</created>
@@ -222,11 +222,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504179491807</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Resume was added">
+      <created>1504180535005</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1504180535005</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8005000" />
+    <option name="totallyTimeSpent" value="8075000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1409" height="1047" extended-state="0" />
@@ -585,8 +592,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Resume/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+        <state relative-caret-position="187">
+          <caret line="11" column="56" lean-forward="false" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
           <folding />
         </state>
       </provider>
