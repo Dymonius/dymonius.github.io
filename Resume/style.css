@@ -1,0 +1,32 @@
+body {
+    font-family: Arial;
+    line-height:21px;
+}
+
+pre {
+    font-family: inherit;
+}
+h2 {
+    font-size: 18px;
+
+}
+
+.container {
+    max-width: 720px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.photo {
+    text-align: center;
+    margin-left: 20px;
+}
+
+.work-experience{
+    margin-left: 25px;
+}
