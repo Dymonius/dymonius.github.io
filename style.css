@@ -1,0 +1,12 @@
+body {
+    padding: 0 30px;
+    font-family: Arial, sans-serif, serif;
+}
+
+a {
+    color: #498EB7;
+}
+
+a:hover {
+    color: #0000FF;
+}
