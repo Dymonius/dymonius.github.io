@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    background-color: lightgray;
+    min-height: 5000px;
+    padding: 10px;
+}
+
+.hero {
+    height: 250px;
+    background-color: lightskyblue;
+    display: block;
+}
+
+.menu {
+    height: 70px;
+    display: block;
+    background: coral;
+    width: 100%;
+    text-align: center;
+    color: white;
+    line-height: 70px;
+    font-size: 40px;
+}
+
+.menu--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 50px;
+    line-height: 50px;
+    font-size: 30px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+    animation:slide-down 0.7s;
+    opacity:0.9;
+}
+
+@keyframes slide-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 0.9;
+        transform: translateY(0);
+    }
+}
