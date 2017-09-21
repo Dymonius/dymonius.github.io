@@ -2,16 +2,19 @@
     margin: 0;
     padding: 0;
 }
+
 .main {
     background-color: lightgray;
     min-height: 5000px;
     padding: 10px;
 }
+
 .hero {
     height: 250px;
     background-color: lightskyblue;
     display: block;
 }
+
 .menu {
     height: 70px;
     display: block;
