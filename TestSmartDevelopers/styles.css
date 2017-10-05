@@ -365,21 +365,20 @@ body {
 }
 
 /*media*/
-@media (max-width: 1000px) {
+@media (max-width: 1050px) {
     .wrapper {
         max-width: 640px;
-        padding-left: 40px;
-        padding-right: 40px;
+        padding: 0 10px;
     }
 
     .description {
         flex-direction: column-reverse;
     }
     .about-author {
-        width: 88%;
+        width: 89%;
     }
     .about-training {
-        width: 88%;
+        width: 89%;
 
     }
     .format {
@@ -396,9 +395,22 @@ body {
     .main-footer__slogan2 {
         font-size: 24px;
     }
+    .main-footer__slogan2{
+        margin-bottom: 60px;
+    }
     .main-footer__button {
         font-size: 27px;
         line-height: 60px;
         height:auto;
     }
 }
+@media (max-width: 460px) {
+    .wrapper {
+        padding: 0 5px;
+    }
+    .button--hero {
+        padding: 0 10px;
+    }
+
+}
+
