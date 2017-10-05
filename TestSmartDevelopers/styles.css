@@ -292,7 +292,7 @@ body {
     padding-top: 20px;
     padding-bottom: 20px;
     background-image: url(images/background1.png);
-    background-position: -50px center;
+    background-position: center;
 
     font-size: 24px;
 }
@@ -368,7 +368,7 @@ body {
 @media (max-width: 1050px) {
     .wrapper {
         max-width: 640px;
-        padding: 0 10px;
+        padding: 0 20px;
     }
 
     .description {
@@ -389,7 +389,7 @@ body {
     }
     .slogan {
         font-size: 24px;
-        background-color: #fff;
+
     }
     .main-footer__slogan1,
     .main-footer__slogan2 {
