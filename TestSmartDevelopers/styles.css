@@ -1,0 +1,404 @@
+/*global*/
+/*font-family: 'PT Sans', sans-serif;*/
+@font-face {
+    font-family: "Circe";
+    src: url("fonts/Circe-Bold.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+body {
+    font-family: 'PT Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.button {
+    padding: 0 65px;
+    margin: 25px 0;
+    color: white;
+    background-color: #FE6331;
+    outline: none;
+    border: none;
+    font-family: 'Circe', 'PT Sans', sans-serif;
+    font-size: 30px;
+    line-height: 70px;
+    border-bottom: 5px solid #FE6360;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #F06231;
+}
+
+.button:active {
+    color: lightgray;
+}
+
+/*header*/
+
+.header-main {
+    text-align: center;
+}
+
+.logo img {
+    margin-left: -60px;
+}
+
+.logo-slogan {
+    font-size: 27px;
+    color: #18374b;
+    margin-top: -10px;
+}
+
+/*hero*/
+
+.hero {
+    font-family: 'Circe', 'PT Sans', sans-serif;
+    text-align: center;
+    border-top: 1px solid black;
+    margin: 20px 10px 40px;
+}
+
+.hero__top {
+    color: #FE6331;
+    font-size: 34px;
+    padding: 30px;
+}
+
+.hero__main {
+    font-size: 30px;
+    line-height: 40px;
+}
+
+/*description*/
+/*Orange section*/
+.description {
+    display: flex;
+}
+
+.about-author {
+    width: 50%;
+    background-color: #FE6331;
+    padding: 32px;
+    color: white;
+}
+
+.description__header {
+    display: flex;
+}
+
+.calendar {
+    flex-basis: 130px;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: bold;
+}
+
+.calendar__month {
+    text-align: center;
+    font-size: 22px;
+    background-color: black;
+}
+
+.calendar__day {
+    text-align: center;
+    line-height: 95px;
+    background-color: #fff;
+    color: #C0C0C0;
+    font-size: 73px;
+}
+
+.date {
+    padding-left: 33px;
+    flex-grow: 1;
+}
+
+.date__week-day {
+    font-family: 'Circe', 'PT Sans', sans-serif;
+    font-size: 30px;
+    line-height: 30px;
+}
+
+.date__day {
+    font-family: 'Circe', 'PT Sans', sans-serif;
+    font-size: 36px;
+    border-bottom: 2px dashed white;
+}
+
+.date__time {
+    font-size: 24px;
+    padding-top: 13px;
+}
+
+.speaker {
+    text-align: center;
+    margin: 35px;
+    font-size: 22px;
+}
+
+.speaker__word {
+    font-family: Georgia, 'PT Sans', sans-serif;
+    font-style: italic;
+    margin: 15px;
+}
+
+.speaker__name, .speaker__surname {
+    font-weight: bold;
+}
+
+.about-author__list {
+    font-size: 18px;
+    padding-right: 20px;
+}
+
+.about-author__list li {
+    margin-bottom: 30px;
+}
+
+/*Grey Section*/
+
+.about-training {
+    width: 50%;
+    background-color: #E9E9E9;
+    padding: 32px;
+}
+
+.about-training__start {
+    font-size: 21px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.about-training__date {
+    display: flex;
+    justify-content: center;
+}
+
+.counter-wrapper {
+    padding-right: 15px;
+}
+
+.counter {
+    width: 70px;
+    height: 70px;
+    background-color: #2F3138;
+    font-family: 'Circe', 'PT Sans', sans-serif;
+    font-size: 48px;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.counter-signature {
+    text-align: center;
+    font-family: 'Circe', 'PT Sans', sans-serif;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 35px;
+}
+
+.about-training__info {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 60px;
+}
+
+.about-training__list {
+    list-style: none;
+    padding: 0;
+}
+
+.about-training__item {
+    padding-left: 26px;
+    position: relative;
+    margin: 10px;
+    margin-bottom: 35px;
+    font-size: 24px;
+
+}
+
+.about-training__item:before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: -3px;
+    width: 8px;
+    height: 15px;
+    border-right: 5px solid #D6132F;
+    border-bottom: 5px solid #D6132F;
+    transform: rotate(45deg);
+}
+
+/*description-whome*/
+.description-whome {
+    padding: 45px;
+    text-align: center;
+}
+
+.format {
+    font-family: Georgia, 'PT Sans', sans-serif;
+    font-style: italic;
+    font-size: 24px;
+}
+
+.format span {
+    font-size: 30px;
+}
+
+.webinar-button {
+    margin: auto;
+    max-width: 383px;
+    height: 60px;
+    background-color: #FE6331;
+    color: white;
+    line-height: 60px;
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 45px;
+    margin-bottom: 25px;
+}
+
+.button-answer {
+    font-size: 36px;
+    border-bottom: 2px dashed black;
+    padding-bottom: 30px;
+}
+
+/*slogan*/
+.slogan {
+    background-color: #F8F8F8;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/*story*/
+.story {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-image: url(images/background1.png);
+    background-position: -50px center;
+
+    font-size: 24px;
+}
+
+/*hobby*/
+.hobby {
+    background-image: url(images/background2.png);
+
+    background-position: center -130px;
+}
+
+.hobby img {
+    width: 100%;
+}
+
+/*footer*/
+.main-footer__slogan1 {
+    font-size: 36px;
+    margin-top: 10px;
+    margin-bottom: 55px;
+}
+
+.main-footer__slogan2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 85px;
+}
+
+.main-footer__button {
+    width: 100%;
+    font-size: 45px;
+    line-height: 100px;
+    height: 100px;
+    border-bottom-width: 8px;
+    margin-bottom: 45px;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+}
+
+.icon {
+    text-align: center;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-bottom: 50px;
+}
+
+.icon a {
+    display: block;
+    color: white;
+    font-size: 25px;
+    line-height: 40px;
+    width: 40px;
+    height: 40px;
+
+}
+
+.icon-vk {
+    background-color: #476788;
+}
+
+.icon-facebook {
+    background-color: #3E5993;
+}
+
+.icon-twitter {
+    background-color: #41A8EA;
+}
+
+/*media*/
+@media (max-width: 1000px) {
+    .wrapper {
+        max-width: 640px;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .description {
+        flex-direction: column-reverse;
+    }
+    .about-author {
+        width: 88%;
+    }
+    .about-training {
+        width: 88%;
+
+    }
+    .format {
+        font-size: 28px;
+    }
+    .button-answer {
+        font-size: 30px;
+    }
+    .slogan {
+        font-size: 24px;
+        background-color: #fff;
+    }
+    .main-footer__slogan1,
+    .main-footer__slogan2 {
+        font-size: 24px;
+    }
+    .main-footer__button {
+        font-size: 27px;
+        line-height: 60px;
+        height:auto;
+    }
+}
