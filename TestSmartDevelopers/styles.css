@@ -375,10 +375,10 @@ body {
         flex-direction: column-reverse;
     }
     .about-author {
-        width: 89%;
+        width: auto;
     }
     .about-training {
-        width: 89%;
+        width: auto;
 
     }
     .format {
