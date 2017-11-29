@@ -206,9 +206,11 @@ body {
 .counter-signature {
     text-align: center;
     font-family: 'Circe', 'PT Sans', sans-serif;
+    text-transform: uppercase;
     font-size: 14px;
     padding-top: 10px;
     padding-bottom: 35px;
+
 }
 
 .about-training__info {

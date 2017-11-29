@@ -1,5 +1,5 @@
 window.onload = function () {
-    var deadline = Date.parse(new Date()) + 169650000; // 169650000ms = 1day 23 hour 7 minutes 30 seconds
+    var deadline = Date.parse(new Date()) + 169650000; // 169650000ms = 1 day 23 hour 7 minutes 30 seconds
     function getTimeRemaining(endtime) {
         var t = endtime - Date.parse(new Date());
         var seconds = Math.floor((t / 1000) % 60);
@@ -32,31 +32,34 @@ window.onload = function () {
             hours.innerHTML = t.hours;
             minutes.innerHTML = t.minutes;
             seconds.innerHTML = t.seconds;
+            var s = ['секунд', 'секунда', 'секунды'];
+            var m = ['минут', 'минута', 'минуты'];
+            var h = ['часов', 'час', 'часа'];
+            var d = ['дней', 'день', 'дня'];
 
-            if (t.seconds - Math.floor(t.seconds/10)*10 === 1) secondsSignature.innerHTML = 'СЕКУНДА';
-            else if (t.seconds - Math.floor(t.seconds/10)*10 === 2) secondsSignature.innerHTML = 'СЕКУНДЫ';
-            else if (t.seconds - Math.floor(t.seconds/10)*10 === 3) secondsSignature.innerHTML = 'СЕКУНДЫ';
-            else if (t.seconds - Math.floor(t.seconds/10)*10 === 4) secondsSignature.innerHTML = 'СЕКУНДЫ';
-            else secondsSignature.innerHTML = 'СЕКУНД';
+            function endings(x, variants) {
+                x0 = x % 10;
+                var res;
 
-            if (t.minutes - Math.floor(t.minutes/10)*10 === 1) minutesSignature.innerHTML = 'МИНУТА';
-            else if (t.minutes - Math.floor(t.minutes/10)*10 === 2) minutesSignature.innerHTML = 'МИНУТЫ';
-            else if (t.minutes - Math.floor(t.minutes/10)*10 === 3) minutesSignature.innerHTML = 'МИНУТЫ';
-            else if (t.minutes - Math.floor(t.minutes/10)*10 === 4) minutesSignature.innerHTML = 'МИНУТЫ';
-            else minutesSignature.innerHTML = 'МИНУТ';
+                if (x >= 5 && x <= 20) {
+                    res = variants[0];
+                }
+                else if (x0 === 1) {
+                    res = variants[1];
+                }
+                else if (x0 >= 2 && x0 <= 4) {
+                    res = variants[2];
+                }
+                else {
+                    res = variants[0];
+                }
+                return res;
+            }
 
-            if (t.hours - Math.floor(t.hours/10)*10 === 1) hoursSignature.innerHTML = 'ЧАС';
-            else if (t.hours - Math.floor(t.hours/10)*10 === 2) hoursSignature.innerHTML = 'ЧАСА';
-            else if (t.hours - Math.floor(t.hours/10)*10 === 3) hoursSignature.innerHTML = 'ЧАСА';
-            else if (t.hours - Math.floor(t.hours/10)*10 === 4) hoursSignature.innerHTML = 'ЧАСА';
-            else hoursSignature.innerHTML = 'ЧАСОВ';
-
-            if (t.days - Math.floor(t.days/10)*10 === 1) daysSignature.innerHTML = 'ДЕНЬ';
-            else if (t.days - Math.floor(t.days/10)*10 === 2) daysSignature.innerHTML = 'ДНЯ';
-            else if (t.days - Math.floor(t.days/10)*10 === 3) daysSignature.innerHTML = 'ДНЯ';
-            else if (t.days - Math.floor(t.days/10)*10 === 4) daysSignature.innerHTML = 'ДНЯ';
-            else daysSignature.innerHTML = 'ДНЕЙ';
-
+            secondsSignature.innerHTML = endings(t.seconds, s);
+            minutesSignature.innerHTML = endings(t.minutes, m);
+            hoursSignature.innerHTML = endings(t.hours, h);
+            daysSignature.innerHTML = endings(t.days, d);
 
 
             if (t.total <= 0) {
