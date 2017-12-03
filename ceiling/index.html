@@ -25,14 +25,28 @@
             <a href="tel:+380671111111" class="phone">(067) 111-11-11</a>
 
         </div>
-        <ul class="menu">
-            <li class="menu__items"><a href="#">Готовые предложения</a></li>
-            <li class="menu__items"><a href="#">Цены</a></li>
-            <li class="menu__items"><a href="#">Производство</a></li>
-            <li class="menu__items"><a href="#">Работы</a></li>
-            <li class="menu__items"><a href="#">Отзывы</a></li>
-            <li class="menu__items"><a href="#">Контакты</a></li>
-        </ul>
+        <div class="landingMenu">
+            <ul class="menu">
+                <li class="menu__items" data-link="first">
+                    <a href="#land_1" class="menu__items-link" data-target="anchor">Готовые предложения</a>
+                </li>
+                <li class="menu__items" data-link="second">
+                    <a href="#land_2" class="menu__items-link" data-target="anchor">Цены</a>
+                </li>
+                <li class="menu__items" data-link="third">
+                    <a href="#land_3" class="menu__items-link" data-target="anchor">Производство</a>
+                </li>
+                <li class="menu__items" data-link="forth">
+                    <a href="#land_4" class="menu__items-link" data-target="anchor">Работы</a>
+                </li>
+                <li class="menu__items" data-link="fifth">
+                    <a href="#land_5" class="menu__items-link" data-target="anchor">Отзывы</a>
+                </li>
+                <li class="menu__items" data-link="sixth">
+                    <a href="#land_6" class="menu__items-link" data-target="anchor">Контакты</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </header>
 <main class="hero">
@@ -152,9 +166,9 @@
         </div>
     </div>
 </div>
-<div class="offers">
+<div id="land_1" class="offers">
 
-    <div class="offers__header">ГОТОВЫЕ ПРЕДЛОЖЕНИЯ</div>
+    <div class="offers__header offers__header--first first">ГОТОВЫЕ ПРЕДЛОЖЕНИЯ</div>
     <div class="offer">
         <div class="container">
             <img class="offer__image" src="images/gotov_1.jpg" alt="">
@@ -289,10 +303,10 @@
     </div>
 
 </div>
-<div class="bg-up-and-down"></div>
+<div id="land_3"><div class="bg-up-and-down"></div>
 <div class="manufacture">
     <div class="container">
-        <div class="manufacture-advantage">
+        <div class="manufacture-advantage third">
             <div class="manufacture-advantage__item">
                 <div class="manufacture-advantage__img manufacture-advantage__img1">
 
@@ -378,20 +392,117 @@
     </div>
 </div>
 <div class="bg-up-and-down bg-up-and-down--bottom"></div>
-<div class="offers__header offers__header--forth ">ФОТОГАЛЕРЕЯ РАБОТ</div>
-<div class="photo-gallery">
-    <div><img src="images/gallery_1.jpg" alt=""></div>
-    <div><img src="images/gallery_2.jpg" alt=""></div>
-    <div><img src="images/gallery_3.jpg" alt=""></div>
-    <div><img src="images/gallery_4.jpg" alt=""></div>
+
+</div>
+<div id="land_4">
+    <div class="offers__header offers__header--forth forth">ФОТОГАЛЕРЕЯ РАБОТ</div>
+    <div class="photo-gallery">
+        <div><img src="images/gallery_1.jpg" alt=""></div>
+        <div><img src="images/gallery_2.jpg" alt=""></div>
+        <div><img src="images/gallery_3.jpg" alt=""></div>
+        <div><img src="images/gallery_4.jpg" alt=""></div>
+    </div>
+</div>
+<div id="land_2">
+    <div class="offers__header offers__header--fifth second">ЦЕНЫ НА ПОТОЛКИ - ПО АКЦИИ 1 ДЕКАБРЯ</div>
+    <div class="offer offer-price">
+        <div class="container">
+
+            <table class="offer__table">
+                <tr>
+                    <td class="product">Потолки БЕЛЬГИЯ (без шва)</td>
+                    <td class="price">130 грн/м2</td>
+                </tr>
+                <tr>
+                    <td class="product">Потолки ГЕРМАНИЯ (без шва)</td>
+                    <td class="price">150 грн/м2</td>
+                </tr>
+                <tr>
+                    <td class="product">Потолки ФРАНЦИЯ (без шва)</td>
+                    <td class="price">170 грн/м2</td>
+                </tr>
+                <tr>
+                    <td class="product">Потолки ИСПАНИЯ (без шва)</td>
+                    <td class="price">190 грн/м2</td>
+                </tr>
+                <tr>
+                    <td class="product">Потолки ИТАЛИЯ (без шва)</td>
+                    <td class="price">210 грн/м2</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="land_5">
+    <div class="offers__header offers__header--sixth fifth">ПРОЧИТАЙТЕ, ПОЧЕМУ НАС ВЫБРАЛИ 2865 КЛИЕНТОВ</div>
+    <div class="comments">
+        <div class="container">
+            <div class="comments__slider">
+                <div class="comments__slide">
+
+                    <img class="comments__img" src="images/otzyvy_face_1.jpg" alt="">
+
+                    <div class="comments__text">
+                        <p>Марина, Киев:</p>
+                        Заказали потолки в "Честных потолках" и не пожалели. Сделали все четко в срок, очень приятные и
+                        грамотные менеджер и замерщик. За короткое время произведена установка, все очень чисто и
+                        аккуратно.
+                        Натяжной потолок скрыл все недостатки предыдущего потолка и визуально даже не уменьшил высоту
+                        потолков. Благодарим сотрудников компании, будем рекомендовать вас своим знакомым.
+                    </div>
+                </div>
+                <div class="comments__slide">
+                    <img class="comments__img" src="images/otzyvy_face_2.jpg" alt="">
+
+                    <div class="comments__text">
+                        <p>Николай, Бровары:</p>
+                        Здравствуйте. Заказали натяжные потолки в вашей компании. По итогу результат оправдал все наши
+                        ожидания, натяжные потолки сделали очень быстро и не дорого. Думали больше денег уйдет. Будем
+                        теперь
+                        на кухню у вас заказывать.
+                    </div>
+                </div>
+                <div class="comments__slide">
+                    <img class="comments__img" src="images/otzyvy_face_3.jpg" alt="">
+
+                    <div class="comments__text">
+                        <p>Гена, Киев:</p>
+                        Заказал натяжной потолок в спальню по акции со скидкой 70%, до конца не верил что такое
+                        возможно. Но
+                        результатом я доволен. Качество отличное, работают славяне. От души ребята! Всем рекомендую!
+                    </div>
+                </div>
+                <div class="comments__slide">
+                    <img class="comments__img" src="images/otzyvy_face_4.jpg" alt="">
+
+                    <div class="comments__text">
+                        <p>Светлана Кириченко, Белая Церковь:</p>
+                        Здравствуйте! Огромное Вам спасибо. Заказали у вас потолок в детскую с фотопечатью, все
+                        чистенько и
+                        быстро сделали. Очень красивый потолок получился. Отдельное спасибо замерщику Ивану и бригаде
+                        монтажников. Еще и хорошие рекомендации дали по освещению)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="land_6">
+    <div class="map sixth"></div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+<script
+        src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
         crossorigin="anonymous">
 </script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6tlU2uyuU5ury0Xe1ny18Q9h4hUQhD10&callback=initMap">
+</script>
 <script src="js/main.min.js"></script>
+
+
 </body>
 
 </html>
