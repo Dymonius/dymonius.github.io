@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament Manager</title>
+    <!--<link rel="stylesheet" href="css//bootstrap.min.css">-->
+    <link href="css/styles.css" rel="stylesheet">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="sample">
+        <div>
+            <div>
+                <label>Players</label>
+                <input type="number" class="form-control" v-model.number="playersCounter">
+                <hr>
+            </div>
+            <div>
+                <label>Buy-in</label>
+                <input type="number" class="form-control" v-model.number="buyIn">
+                <hr>
+            </div>
+            <div>
+                <label>Starting chips</label>
+                <input type="number" class="form-control" v-model.number="startingChips">
+                <hr>
+            </div>
+            <div>
+                <label>Blind time(level duration in seconds)</label>
+                <input type="number" class="form-control" v-model.number="blindTime">
+                <hr>
+            </div>
+            <div>
+                <label>Structure small / big blinds</label>
+                <div>
+                    <div v-for="item in structure">
+                        <label>Level: {{item.level}}</label>
+                        <input type="number" v-model.number="item.smallBlind">
+                        <input type="number" v-model.number="item.bigBlind">
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div>
+                <span>Prize pool: {{prizePool}} </span>
+                <hr>
+            </div>
+            <div>
+                <span>Average stack: {{averageStack}}</span>
+                <hr>
+            </div>
+            <div>
+                <span>Prizes</span>
+                <div v-for="(item, index) in prizeStructure">{{index + 1}}: {{item}}</div>
+                <hr>
+            </div>
+            <div>
+                <span>Level: {{blindsCounter}}</span>
+                <hr>
+            </div>
+            <div>
+                <span>Blinds: {{currentBlinds[1]}} / {{currentBlinds[0]}}</span>
+                <hr>
+            </div>
+            <div>
+                <label>Current players</label>
+                <input type="number" class="form-control" v-model.number="currentPlayersCounter">
+                <hr>
+            </div>
+            <div>
+                <span>Elapsed time</span>
+                <div>{{hours}} : {{minutes}} : {{seconds}}</div>
+                <button @click="startPause">{{btnText}}</button>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    new Vue({
+        el: '.sample',
+        data: {
+            playersCounter: 4,
+            currentPlayersCounter: 4,
+            buyIn: 100,
+            startingChips: 3000,
+            blindTime: 5,
+            structure: [
+                {
+                    level: 1,
+                    smallBlind: 25,
+                    bigBlind: 50
+                },
+                {
+                    level: 2,
+                    smallBlind: 50,
+                    bigBlind: 100
+                },
+                {
+                    level: 3,
+                    smallBlind: 75,
+                    bigBlind: 150
+                },
+                {
+                    level: 4,
+                    smallBlind: 100,
+                    bigBlind: 200
+                },
+                {
+                    level: 5,
+                    smallBlind: 150,
+                    bigBlind: 300
+                },
+                {
+                    level: 6,
+                    smallBlind: 200,
+                    bigBlind: 400
+                },
+                {
+                    level: 7,
+                    smallBlind: 250,
+                    bigBlind: 500
+                },
+                {
+                    level: 8,
+                    smallBlind: 300,
+                    bigBlind: 600
+                },
+                {
+                    level: 9,
+                    smallBlind: 400,
+                    bigBlind: 800
+                },
+                {
+                    level: 10,
+                    smallBlind: 500,
+                    bigBlind: 1000
+                },
+                {
+                    level: 11,
+                    smallBlind: 700,
+                    bigBlind: 1400
+                },
+                {
+                    level: 12,
+                    smallBlind: 1000,
+                    bigBlind: 2000
+                },
+                {
+                    level: 13,
+                    smallBlind: 1500,
+                    bigBlind: 3000
+                },
+                {
+                    level: 14,
+                    smallBlind: 2000,
+                    bigBlind: 4000
+                },
+                {
+                    level: 15,
+                    smallBlind: 2500,
+                    bigBlind: 5000
+                },
+                {
+                    level: 16,
+                    smallBlind: 3000,
+                    bigBlind: 6000
+                },
+                {
+                    level: 17,
+                    smallBlind: 5000,
+                    bigBlind: 10000
+                }
+
+
+            ],
+
+            btnText: 'Start',
+
+            running: false,
+            timerId: '',
+            time: 0,
+            hours: 0,
+            minutes: '00',
+            seconds: '00',
+
+            blindsCounter: 1,
+        },
+        computed: {
+            prizePool() {
+                return this.playersCounter * this.buyIn;
+            },
+            averageStack() {
+                return this.playersCounter * this.startingChips / this.currentPlayersCounter
+            },
+            prizeStructure() {
+                let first = this.playersCounter * this.buyIn / 100 * 70;
+                let second = this.playersCounter * this.buyIn / 100 * 30;
+                return [first, second]
+            },
+            currentBlinds() {
+                return [this.structure[this.blindsCounter - 1].bigBlind, this.structure[this.blindsCounter - 1].smallBlind];
+            }
+
+
+        },
+        methods: {
+            startPause() {
+                if (!this.running) {
+                    this.btnText = 'Pause';
+                    this.running = true;
+                    this.timerId = setInterval(() => {
+                        this.time++;
+                        console.log(this.time)
+                        this.minutes = Math.floor(this.time  / 60);
+                        this.seconds = Math.floor(this.time  % 60);
+                        this.hours = Math.floor(this.time  / 60 / 60);
+                        if (this.minutes < 10) {
+                            this.minutes = "0" + this.minutes;
+                        }
+                        if (this.seconds < 10) {
+                            this.seconds = "0" + this.seconds;
+                        }
+                    }, 1000);
+                }
+                else {
+                    this.running = false;
+                    this.btnText = 'Resume';
+                    clearInterval(this.timerId);
+                }
+
+            },
+        },
+        watch: {
+            seconds() {
+                if (!(this.seconds % this.blindTime)) {
+                    this.blindsCounter++;
+
+                    let synth = window.speechSynthesis;
+                    let utterance = new SpeechSynthesisUtterance('повышение блаиндов ' + this.structure[this.blindsCounter - 1].smallBlind + ' ' + this.structure[this.blindsCounter - 1].bigBlind + ' .');
+                    synth.speak(utterance);
+                }
+
+            },
+        }
+    })
+</script>
+</body>
+</html>
