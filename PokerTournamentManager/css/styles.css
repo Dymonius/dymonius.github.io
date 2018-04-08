@@ -1,5 +1,132 @@
-.wrapper{
-	padding: 15px;
-	max-width: 500px;
-	margin: 0 auto;
+.wrapper {
+    padding: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.caption {
+    font-weight: 700;
+    color: gray;
+}
+
+.tournament-name {
+    padding: 10px;
+}
+
+.tournament-settings {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tournament-settings__item {
+    width: 33.3%;
+    padding: 10px;
+}
+
+.blinds-structure__caption {
+    padding: 10px 10px 5px 10px;
+    font-weight: 700;
+}
+
+.blinds-structure__list {
+
+}
+
+.blinds-structure__item {
+    display: flex;
+}
+
+.blinds-structure__item-in-item {
+    width: 33.3%;
+    margin: 10px;
+}
+
+.blinds-structure__item-in-item-caption {
+    line-height: 32px;
+}
+
+.main__tournament-name {
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.timer {
+    font-size: 65px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.main__blinds {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.main__blinds-text {
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.buttons-block {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.buttons-block button {
+    min-width: 77px;
+}
+
+.buttons-block button:first-child {
+    margin-right: 20px;
+}
+
+.table-block {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.table-block__item {
+    padding: 10px;
+    border: 1px solid #BABABA;
+    width: 50%;
+    border-bottom: none;
+}
+
+.table-block__item:nth-child(odd) {
+    border-right: none;
+}
+
+.table-block__item:last-child {
+    border-bottom: 1px solid #BABABA;
+    border-right: 1px solid #BABABA;
+    width: 100%;
+}
+
+.prizes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.settings__back-button {
+    display: block;
+    margin: auto;
+}
+
+@media (max-width: 507px) {
+    .tournament-settings__item {
+        width: 50%;
+    }
+}
+
+@media (max-width: 350px) {
+    .tournament-settings__item {
+        width: 100%;
+    }
+
+    .form-control {
+        padding: 5px;
+    }
 }
