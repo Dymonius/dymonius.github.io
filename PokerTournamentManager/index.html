@@ -234,6 +234,7 @@
         },
         methods: {
             startPause() {
+                Screen.sleepTimeout = 0;
                 if ((this.seconds || this.minutes || this.hours) == false) {
                     let synth = window.speechSynthesis;
                     let utterance = new SpeechSynthesisUtterance(' the tournament started ');
