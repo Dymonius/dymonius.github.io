@@ -2,6 +2,22 @@
     padding: 15px;
     max-width: 500px;
     margin: 0 auto;
+    position: relative;
+}
+
+.settings, .main {
+    position: absolute;
+    width: auto;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+
+
+.languages {
+    position: absolute;
+    right: 15px;
+    top: 0;
 }
 
 .caption {
@@ -112,7 +128,37 @@
 
 .settings__back-button {
     display: block;
-    margin: auto;
+    margin-left: 10px;
+}
+
+/*Animations*/
+.window-enter {
+    opacity: 0;
+    transform: translateX(100%);
+
+}
+
+.window-enter-active {
+    transition: all .3s;
+}
+
+.window-enter-to {
+    transform: translateX(0);
+}
+
+.window-leave {
+
+
+}
+
+.window-leave-active {
+    transition: all .3s;
+
+}
+
+.window-leave-to {
+    transform: translateX(-100%);
+    opacity: 0;
 }
 
 @media (max-width: 507px) {
