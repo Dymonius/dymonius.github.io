@@ -11,102 +11,223 @@
 <body>
 <div class="wrapper">
     <div class="app">
-        <div class="settings" v-if="settingsShowed">
-            <button class="btn btn-success settings__back-button" @click="settingsShowed = false">Back</button>
-            <div class="tournament-name">
-                <label>Tournament Name</label>
-                <input type="text" class="form-control" v-model="tournamentName">
-            </div>
-            <div class="tournament-settings">
-                <div class="tournament-settings__item">
-                    <label>Entries</label>
-                    <input type="number" class="form-control" v-model.number="playersCounter">
-                </div>
-                <div class="tournament-settings__item">
-                    <label>Players in the game</label>
-                    <input type="number" class="form-control" v-model.number="currentPlayersCounter">
-                </div>
-                <div class="tournament-settings__item">
-                    <label>Buy-in</label>
-                    <input type="number" class="form-control" v-model.number="buyIn">
-                </div>
-                <div class="tournament-settings__item">
-                    <label>Starting chips</label>
-                    <input type="number" class="form-control" v-model.number="startingChips">
-                </div>
-                <div class="tournament-settings__item">
-                    <label>Level duration (sec)</label>
-                    <input type="number" class="form-control" v-model.number="blindTime">
-                </div>
-            </div>
-            <div class="blinds-structure">
-                <div class="blinds-structure__caption">Structure small / big blinds</div>
-                <div class="blinds-structure__list">
-                    <div class="blinds-structure__item" v-for="item in structure">
-                        <div class="blinds-structure__item-in-item blinds-structure__item-in-item-caption">Level:
-                            {{item.level}}
-                        </div>
-                        <input class="form-control blinds-structure__item-in-item" type="number"
-                               v-model.number="item.smallBlind">
-                        <input class="form-control blinds-structure__item-in-item" type="number"
-                               v-model.number="item.bigBlind">
+
+        <div v-if="languageEn">
+            <transition name="window">
+                <div class="settings" v-if="settingsShowed">
+                    <button class="btn btn-success settings__back-button" @click="settingsShowed = false">Back</button>
+                    <div class="languages">
+                        <button class="btn btn-secondary" @click="languageEn = true">En</button>
+                        <button class="btn btn-secondary" @click="languageEn = false">Рус</button>
                     </div>
+                    <div class="tournament-name">
+                        <label>Tournament Name</label>
+                        <input type="text" class="form-control" v-model="tournamentName">
+                    </div>
+                    <div class="tournament-settings">
+                        <div class="tournament-settings__item">
+                            <label>Entries</label>
+                            <input type="number" class="form-control" v-model.number="playersCounter">
+                        </div>
+                        <div class="tournament-settings__item">
+                            <label>Players in the game</label>
+                            <input type="number" class="form-control" v-model.number="currentPlayersCounter">
+                        </div>
+                        <div class="tournament-settings__item">
+                            <label>Buy-in</label>
+                            <input type="number" class="form-control" v-model.number="buyIn">
+                        </div>
+                        <div class="tournament-settings__item">
+                            <label>Starting chips</label>
+                            <input type="number" class="form-control" v-model.number="startingChips">
+                        </div>
+                        <div class="tournament-settings__item">
+                            <label>Level duration (sec)</label>
+                            <input type="number" class="form-control" v-model.number="blindTime">
+                        </div>
+                    </div>
+                    <div class="blinds-structure">
+                        <div class="blinds-structure__caption">Structure small / big blinds</div>
+                        <div class="blinds-structure__list">
+                            <div class="blinds-structure__item" v-for="item in structure">
+                                <div class="blinds-structure__item-in-item blinds-structure__item-in-item-caption">
+                                    Level:
+                                    {{item.level}}
+                                </div>
+                                <input class="form-control blinds-structure__item-in-item" type="number"
+                                       v-model.number="item.smallBlind">
+                                <input class="form-control blinds-structure__item-in-item" type="number"
+                                       v-model.number="item.bigBlind">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success settings__back-button" @click="settingsShowed = false">Back</button>
                 </div>
-            </div>
-            <button class="btn btn-success settings__back-button" @click="settingsShowed = false">Back</button>
-        </div>
-        <div class="main" v-if="!settingsShowed">
-            <div class="main__tournament-name">{{tournamentName}}</div>
-            <div class="timer">{{hours}}:{{minutes}}:{{seconds}}</div>
-            <div class="main__blinds">
-                <div class="caption">Blinds:</div>
-                <div class="main__blinds-text">{{currentBlinds[1]}} / {{currentBlinds[0]}}</div>
-            </div>
-            <div class="buttons-block">
-                <button class="btn btn-primary" @click="startPause">{{btnText}}</button>
-                <button class="btn btn-success" @click="settingsShowed = true">Settings</button>
-            </div>
-            <div class="table-block">
-                <div class="table-block__item">
-                    <span class="caption">Entries / In the game:</span>
-                    <nobr>{{playersCounter}} / {{currentPlayersCounter}}</nobr>
-                </div>
-                <div class="table-block__item">
-                    <span class="caption">Buy-in:</span> {{buyIn}}
-                </div>
-                <div class="table-block__item">
-                    <span class="caption">Prize pool:</span> {{prizePool}}
-                </div>
-                <div class="table-block__item">
-                    <span class="caption">Starting chips:</span> {{startingChips}}
-                </div>
-                <div class="table-block__item">
-                    <span class="caption">Average stack:</span> {{averageStack}}
-                </div>
-                <div class="table-block__item">
-                    <span class="caption">Level:</span> {{blindsCounter}}
-                </div>
-                <div class="table-block__item">
-                    <span class="caption">Level duration (sec):</span> {{blindTime}}
-                </div>
-                <div class="table-block__item">
-                    <span class="caption">Next Blinds: </span>
-                    <nobr>{{nextBlinds[1]}} / {{nextBlinds[0]}}</nobr>
-                </div>
-                <div class="table-block__item prizes">
-                    <div class="caption">Prizes:&nbsp</div>
-                    <div v-for="(item, index) in prizeStructure">{{ index + 1}}: {{ item + ',' + '&nbsp'}}</div>
-                </div>
-            </div>
+            </transition>
+            <transition name="window">
+                <div class="main" v-if="!settingsShowed">
+                    <div class="languages">
+                        <button class="btn btn-secondary" @click="languageEn = true">En</button>
+                        <button class="btn btn-secondary" @click="languageEn = false">Рус</button>
+                    </div>
+                    <div class="main__tournament-name">{{tournamentName}}</div>
+                    <div class="timer">{{hours}}:{{minutes}}:{{seconds}}</div>
+                    <div class="main__blinds">
+                        <div class="caption">Blinds:</div>
+                        <div class="main__blinds-text">{{currentBlinds[1]}} / {{currentBlinds[0]}}</div>
+                    </div>
+                    <div class="buttons-block">
+                        <button class="btn btn-primary" @click="startPause">{{btnText}}</button>
+                        <button class="btn btn-success" @click="settingsShowed = true">Settings</button>
+                    </div>
+                    <div class="table-block">
+                        <div class="table-block__item">
+                            <span class="caption">Entries / In the game:</span>
+                            <nobr>{{playersCounter}} / {{currentPlayersCounter}}</nobr>
+                        </div>
+                        <div class="table-block__item">
+                            <span class="caption">Buy-in:</span> {{buyIn}}
+                        </div>
+                        <div class="table-block__item">
+                            <span class="caption">Prize pool:</span> {{prizePool}}
+                        </div>
+                        <div class="table-block__item">
+                            <span class="caption">Starting chips:</span> {{startingChips}}
+                        </div>
+                        <div class="table-block__item">
+                            <span class="caption">Average stack:</span> {{averageStack}}
+                        </div>
+                        <div class="table-block__item">
+                            <span class="caption">Level:</span> {{blindsCounter}}
+                        </div>
+                        <div class="table-block__item">
+                            <span class="caption">Level duration (sec):</span> {{blindTime}}
+                        </div>
+                        <div class="table-block__item">
+                            <span class="caption">Next Blinds: </span>
+                            <nobr>{{nextBlinds[1]}} / {{nextBlinds[0]}}</nobr>
+                        </div>
+                        <div class="table-block__item prizes">
+                            <div class="caption">Prizes:&nbsp</div>
+                            <div v-for="(item, index) in prizeStructure">{{ index + 1}}: {{ item + ',' + '&nbsp'}}</div>
+                        </div>
+                    </div>
 
+                </div>
+            </transition>
         </div>
+        <div v-if="!languageEn">
+            <transition name="window">
+                <div class="settings" v-if="settingsShowed">
 
+                    <button class="btn btn-success settings__back-button" @click="settingsShowed = false">Назад</button>
+                    <div class="languages">
+                        <button class="btn btn-secondary" @click="languageEn = true">En</button>
+                        <button class="btn btn-secondary" @click="languageEn = false">Рус</button>
+                    </div>
+                    <div class="tournament-name">
+                        <label>Название Турнира</label>
+                        <input type="text" class="form-control" v-model="tournamentName">
+                    </div>
+                    <div class="tournament-settings">
+                        <div class="tournament-settings__item">
+                            <label>Кол-во входов</label>
+                            <input type="number" class="form-control" v-model.number="playersCounter">
+                        </div>
+                        <div class="tournament-settings__item">
+                            <label>Осталось игроков</label>
+                            <input type="number" class="form-control" v-model.number="currentPlayersCounter">
+                        </div>
+                        <div class="tournament-settings__item">
+                            <label>Бай-ин</label>
+                            <input type="number" class="form-control" v-model.number="buyIn">
+                        </div>
+                        <div class="tournament-settings__item">
+                            <label>Кол-во стартовых фишек</label>
+                            <input type="number" class="form-control" v-model.number="startingChips">
+                        </div>
+                        <div class="tournament-settings__item">
+                            <label>Продолжительность уровней</label>
+                            <input type="number" class="form-control" v-model.number="blindTime">
+                        </div>
+                    </div>
+                    <div class="blinds-structure">
+                        <div class="blinds-structure__caption">Структура: малый / большой блаинды</div>
+                        <div class="blinds-structure__list">
+                            <div class="blinds-structure__item" v-for="item in structure">
+                                <div class="blinds-structure__item-in-item blinds-structure__item-in-item-caption">
+                                    Уровень:
+                                    {{item.level}}
+                                </div>
+                                <input class="form-control blinds-structure__item-in-item" type="number"
+                                       v-model.number="item.smallBlind">
+                                <input class="form-control blinds-structure__item-in-item" type="number"
+                                       v-model.number="item.bigBlind">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success settings__back-button" @click="settingsShowed = false">Назад</button>
+                </div>
+            </transition>
+            <transition name="window">
+                <div class="main" v-if="!settingsShowed">
+                    <div class="languages">
+                        <button class="btn btn-secondary" @click="languageEn = true">En</button>
+                        <button class="btn btn-secondary" @click="languageEn = false">Рус</button>
+                    </div>
+                    <div class="main__tournament-name">{{tournamentName}}</div>
+                    <div class="timer">{{hours}}:{{minutes}}:{{seconds}}</div>
+                    <div class="main__blinds">
+                        <div class="caption">Блаинды:</div>
+                        <div class="main__blinds-text">{{currentBlinds[1]}} / {{currentBlinds[0]}}</div>
+                    </div>
+                    <div class="buttons-block">
+                        <button class="btn btn-primary" @click="startPause">{{btnText}}</button>
+                        <button class="btn btn-success" @click="settingsShowed = true">Настройки</button>
+                    </div>
+                    <div class="table-block">
+                        <div class="table-block__item">
+                            <span class="caption">Входов / в игре:</span>
+                            <nobr>{{playersCounter}} / {{currentPlayersCounter}}</nobr>
+                        </div>
+                        <div class="table-block__item">
+                            <span class="caption">Бай-ин:</span> {{buyIn}}
+                        </div>
+                        <div class="table-block__item">
+                            <span class="caption">Призовой фонд:</span> {{prizePool}}
+                        </div>
+                        <div class="table-block__item">
+                            <span class="caption">Кол-во стартовых фишек:</span> {{startingChips}}
+                        </div>
+                        <div class="table-block__item">
+                            <span class="caption">Средний стэк:</span> {{averageStack}}
+                        </div>
+                        <div class="table-block__item">
+                            <span class="caption">Уровень:</span> {{blindsCounter}}
+                        </div>
+                        <div class="table-block__item">
+                            <span class="caption">Продолжительность уровней:</span> {{blindTime}}
+                        </div>
+                        <div class="table-block__item">
+                            <span class="caption">Следующие блаинды: </span>
+                            <nobr>{{nextBlinds[1]}} / {{nextBlinds[0]}}</nobr>
+                        </div>
+                        <div class="table-block__item prizes">
+                            <div class="caption">Призовые:&nbsp</div>
+                            <div v-for="(item, index) in prizeStructure">{{ index + 1}}: {{ item + ',' + '&nbsp'}}</div>
+                        </div>
+                    </div>
+
+                </div>
+            </transition>
+        </div>
     </div>
 </div>
 <script>
     new Vue({
         el: '.app',
         data: {
+            languageEn: true,
             settingsShowed: false,
             tournamentName: 'Texas Holdem Tournament',
             playersCounter: 4,
@@ -234,11 +355,18 @@
         },
         methods: {
             startPause() {
-
                 if ((this.seconds || this.minutes || this.hours) == false) {
                     let synth = window.speechSynthesis;
-                    let utterance = new SpeechSynthesisUtterance(' the tournament started ');
-                    utterance.lang = 'en-US';
+                    let utterance;
+
+                    if (this.languageEn) {
+                        utterance = new SpeechSynthesisUtterance(' the tournament started ');
+                        utterance.lang = 'en-US';
+                    }
+                    else {
+                        utterance = new SpeechSynthesisUtterance(' турнир стартовал ');
+                        utterance.lang = 'ru-RU';
+                    }
                     synth.speak(utterance);
                 }
                 if (!this.running) {
@@ -271,8 +399,15 @@
                     this.blindsCounter++;
 
                     let synth = window.speechSynthesis;
-                    let utterance = new SpeechSynthesisUtterance('blinds up ' + this.structure[this.blindsCounter - 1].smallBlind + ' ' + this.structure[this.blindsCounter - 1].bigBlind + ' .');
-                    utterance.lang = 'en-US';
+                    let utterance;
+                    if (this.languageEn) {
+                        utterance = new SpeechSynthesisUtterance('blinds up ' + this.structure[this.blindsCounter - 1].smallBlind + ' ' + this.structure[this.blindsCounter - 1].bigBlind + ' .');
+                        utterance.lang = 'en-US';
+                    }
+                    else {
+                        utterance = new SpeechSynthesisUtterance('повышение блаиндов ' + this.structure[this.blindsCounter - 1].smallBlind + ' ' + this.structure[this.blindsCounter - 1].bigBlind + ' .');
+                        utterance.lang = 'ru-RU';
+                    }
                     synth.speak(utterance);
                 }
             },
