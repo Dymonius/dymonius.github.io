@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <link rel="stylesheet" href="css//bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="css/styles.css" rel="stylesheet">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <div class="footer">
+
+        <div class="wrapper">
+            <div class="figure-settings" v-if="currentFigure.selected">
+                <div class="figure-settings__coords" v-if="currentFigure.figure === 'rectangle'">
+                    <label for="x">x:</label>
+                    <input type="number" id="x" v-model="currentFigure.x">
+                    <label for="y">y:</label>
+                    <input type="number" id="y" v-model="currentFigure.y">
+                </div>
+                <div class="figure-settings__coords" v-if="currentFigure.figure === 'rectangle'">
+                    <label for="w">w:</label>
+                    <input type="number" id="w" v-model="currentFigure.w">
+                    <label for="h">h:</label>
+                    <input type="number" id="h" v-model="currentFigure.h">
+                </div>
+                <div class="figure-settings__color-picker" v-if="currentFigure.figure === 'rectangle'">
+                    <label for="color">Background color:</label>
+                    <input type="color" id="color" v-model="currentFigure.fillStyle">
+                </div>
+            </div>
+            <div class="figure-settings" v-if="currentFigure.selected && currentFigure.figure === 'circle'">
+                <div class="figure-settings__coords">
+                    <label for="x">x:</label>
+                    <input type="number" id="x" v-model="currentFigure.x">
+                    <label for="y">y:</label>
+                    <input type="number" id="y" v-model="currentFigure.y">
+                </div>
+                <div class="figure-settings__coords">
+                    <label for="r">r:</label>
+                    <input type="number" id="r" v-model="currentFigure.r">
+                </div>
+                <div class="figure-settings__color-picker">
+                    <label for="color">Background color:</label>
+                    <input type="color" id="color" v-model="currentFigure.fillStyle">
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons" v-if="figuresCounter < 10">
+            <div class="buttons__add">
+                <button @click="addRect">Add Rectangle</button>
+                <button @click="addCircle">Add Circle</button>
+            </div>
+        </div>
+        <div class="button-delete" v-if="currentFigure">
+            <button @click="deleteFigure">Delete</button>
+        </div>
+    </div>
+
+
+</div>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: {
+            figuresCounter: 0,
+            currentFigure: false,
+            figures: [],
+        },
+        methods: {
+            addRect: function () {
+                this.figuresCounter++;
+                let Rect = function (x, y, w, h) {
+                    this.x = x;
+                    this.y = y;
+                    this.w = w;
+                    this.h = h;
+                    this.fillStyle = '#000afc';
+                    this.strokeStyle = '#FC3636';
+                    this.lineWidth = 1;
+                    this.selected = true;
+                    this.figure = 'rectangle';
+                    if (v.$data.currentFigure) {
+                        for (i in v.$data.currentFigure) {
+                            v.$data.currentFigure.selected = false;
+                        }
+                    }
+                    v.$data.currentFigure = this;
+                };
+
+                Rect.prototype = {
+                    draw: function () {
+                        ctx.fillStyle = this.fillStyle;
+                        ctx.fillRect(this.x, this.y, this.w, this.h);
+                        ctx.strokeStyle = this.strokeStyle;
+                        ctx.lineWidth = this.lineWidth;
+                    },
+                    stroke: function () {
+                        ctx.strokeRect(this.x, this.y, this.w, this.h);
+                    },
+                };
+                let canvas = document.getElementById('canvas'),
+                    ctx = canvas.getContext('2d');
+                this.figures.push(new Rect(250, 225, 300, 150));
+            },
+            addCircle: function () {
+                this.figuresCounter++;
+                let Circle = function (x, y, r) {
+                    this.x = x;
+                    this.y = y;
+                    this.r = r;
+                    this.fillStyle = '#FC3636';
+                    this.strokeStyle = '#fcf871';
+                    this.lineWidth = 1;
+                    this.selected = true;
+                    this.figure = 'circle';
+                    if (v.$data.currentFigure) {
+                        for (i in v.$data.currentFigure) {
+                            v.$data.currentFigure.selected = false;
+                        }
+                    }
+                    v.$data.currentFigure = this;
+                };
+
+                Circle.prototype = {
+                    draw: function () {
+                        ctx.fillStyle = this.fillStyle;
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
+                        ctx.fill();
+                        ctx.strokeStyle = this.strokeStyle;
+                        ctx.lineWidth = this.lineWidth;
+                    },
+                    stroke: function () {
+                        ctx.strokeRect(this.x - this.r, this.y - this.r, this.r * 2, this.r * 2);
+                    },
+                };
+                let canvas = document.getElementById('canvas'),
+                    ctx = canvas.getContext('2d');
+                this.figures.push(new Circle(400, 300, 120));
+            },
+            deleteFigure: function () {
+                let i;
+                for (let i = 0; i < this.figures.length; i++) {
+                    if (this.figures[i].selected) {
+                        this.figures.splice(i, 1);
+                        this.figuresCounter--;
+                        this.currentFigure = false;
+                        break;
+                    }
+
+                }
+            },
+            updateCanvas: function () {
+                let canvas = document.getElementById('canvas'),
+                    ctx = canvas.getContext('2d');
+                let mouse = {
+                    x: 0,
+                    y: 0,
+                };
+                let selected = false;
+
+
+                let isCursorInRect = function (rect) {
+                    if (rect.figure == 'circle') {
+                        return mouse.x > rect.x - rect.r && mouse.x < rect.x + rect.r && mouse.y > rect.y - rect.r && mouse.y < rect.y + rect.r;
+                    }
+                    if (rect.figure == 'rectangle') {
+                        return mouse.x > rect.x && mouse.x < rect.x + rect.w && mouse.y > rect.y && mouse.y < rect.y + rect.h;
+                    }
+                };
+
+                let i = 0;
+
+                setInterval(() => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    for (i in this.figures) {
+                        this.figures[i].draw();
+
+                        if (this.figures[i].selected) {
+
+                            this.figures[i].stroke();
+                        }
+                    }
+                    if (selected) {
+                        selected.x = mouse.x;
+                        selected.y = mouse.y;
+                    }
+                }, 30);
+
+                canvas.onmousemove = (e) => {
+                    mouse.x = e.pageX;
+                    mouse.y = e.pageY;
+                };
+                canvas.onmousedown = (e) => {
+                    if (!selected) {
+                        let i;
+                        for (i in this.figures) {
+                            this.figures[i].draw();
+                            this.figures[i].selected = false;
+
+                            if (isCursorInRect(this.figures[i])) {
+                                selected = this.figures[i];
+                                this.currentFigure = selected;
+                                this.figures[i].selected = true;
+                            }
+                        }
+                    }
+                };
+                canvas.onmouseup = function (e) {
+                    selected = false;
+                };
+
+            }
+        },
+        mounted: function () {
+            this.updateCanvas();
+        }
+    });
+</script>
+</body>
+</html>

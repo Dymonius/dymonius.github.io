@@ -1,0 +1,33 @@
+#app {
+    width: 800px;
+}
+
+canvas {
+    background: lightgray;
+    width: 800px;
+    height: 600px;
+}
+
+.footer {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+input[type="number"] {
+    width: 70px;
+}
+
+.figure-settings__coords *, .figure-settings__color-picker * {
+    margin: 10px;
+}
+
+.buttons * {
+    margin: 5px;
+}
+.button-delete button {
+    display: block;
+    margin: 10px;
+    margin-left: auto;
+
+}
