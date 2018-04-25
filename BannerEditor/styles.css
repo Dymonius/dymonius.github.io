@@ -19,15 +19,36 @@ input[type="number"] {
 }
 
 .figure-settings__coords *, .figure-settings__color-picker * {
-    margin: 10px;
+    margin: 5px;
 }
 
 .buttons * {
     margin: 5px;
 }
+
 .button-delete button {
     display: block;
-    margin: 10px;
+    margin: 5px;
     margin-left: auto;
 
+}
+
+.wrapper-figure-settings {
+    width: 290px;
+}
+
+.wrapper-buttons {
+    width: 400px;
+}
+
+.wrapper-button-delete {
+    width: 120px;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
 }

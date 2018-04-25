@@ -3,62 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1</title>
-    <link rel="stylesheet" href="css//bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link href="css/styles.css" rel="stylesheet">
-    <script src="js/vue.js"></script>
+    <title>BannerEditor</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="vue/vue.js"></script>
 </head>
 <body>
 <div id="app">
     <canvas id="canvas" width="800" height="600"></canvas>
     <div class="footer">
-
-        <div class="wrapper">
-            <div class="figure-settings" v-if="currentFigure.selected">
-                <div class="figure-settings__coords" v-if="currentFigure.figure === 'rectangle'">
-                    <label for="x">x:</label>
-                    <input type="number" id="x" v-model="currentFigure.x">
-                    <label for="y">y:</label>
-                    <input type="number" id="y" v-model="currentFigure.y">
+        <div class="wrapper-figure-settings">
+            <transition name="fade">
+                <div class="figure-settings" v-if="currentFigure.selected">
+                    <div class="figure-settings__coords" v-if="currentFigure.figure === 'rectangle'">
+                        <label for="x">x:</label>
+                        <input type="number" id="x" v-model="currentFigure.x">
+                        <label for="y">y:</label>
+                        <input type="number" id="y" v-model="currentFigure.y">
+                    </div>
+                    <div class="figure-settings__coords" v-if="currentFigure.figure === 'rectangle'">
+                        <label for="w">w:</label>
+                        <input type="number" id="w" v-model="currentFigure.w">
+                        <label for="h">h:</label>
+                        <input type="number" id="h" v-model="currentFigure.h">
+                    </div>
+                    <div class="figure-settings__color-picker" v-if="currentFigure.figure === 'rectangle'">
+                        <label for="color">Background color:</label>
+                        <input type="color" id="color" v-model="currentFigure.fillStyle">
+                    </div>
                 </div>
-                <div class="figure-settings__coords" v-if="currentFigure.figure === 'rectangle'">
-                    <label for="w">w:</label>
-                    <input type="number" id="w" v-model="currentFigure.w">
-                    <label for="h">h:</label>
-                    <input type="number" id="h" v-model="currentFigure.h">
+            </transition>
+            <transition name="fade">
+                <div class="figure-settings" v-if="currentFigure.selected && currentFigure.figure === 'circle'">
+                    <div class="figure-settings__coords">
+                        <label for="x">x:</label>
+                        <input type="number" id="x" v-model="currentFigure.x">
+                        <label for="y">y:</label>
+                        <input type="number" id="y" v-model="currentFigure.y">
+                    </div>
+                    <div class="figure-settings__coords">
+                        <label for="r">r:</label>
+                        <input type="number" id="r" v-model="currentFigure.r">
+                    </div>
+                    <div class="figure-settings__color-picker">
+                        <label for="color">Background color:</label>
+                        <input type="color" id="color" v-model="currentFigure.fillStyle">
+                    </div>
                 </div>
-                <div class="figure-settings__color-picker" v-if="currentFigure.figure === 'rectangle'">
-                    <label for="color">Background color:</label>
-                    <input type="color" id="color" v-model="currentFigure.fillStyle">
-                </div>
-            </div>
-            <div class="figure-settings" v-if="currentFigure.selected && currentFigure.figure === 'circle'">
-                <div class="figure-settings__coords">
-                    <label for="x">x:</label>
-                    <input type="number" id="x" v-model="currentFigure.x">
-                    <label for="y">y:</label>
-                    <input type="number" id="y" v-model="currentFigure.y">
-                </div>
-                <div class="figure-settings__coords">
-                    <label for="r">r:</label>
-                    <input type="number" id="r" v-model="currentFigure.r">
-                </div>
-                <div class="figure-settings__color-picker">
-                    <label for="color">Background color:</label>
-                    <input type="color" id="color" v-model="currentFigure.fillStyle">
-                </div>
-            </div>
+            </transition>
         </div>
 
-        <div class="buttons" v-if="figuresCounter < 10">
-            <div class="buttons__add">
-                <button @click="addRect">Add Rectangle</button>
-                <button @click="addCircle">Add Circle</button>
-            </div>
+        <div class="wrapper-buttons">
+            <transition name="fade">
+                <div class="buttons" v-if="figuresCounter < 10">
+                    <div class="buttons__add">
+                        <button @click="addRect">Add Rectangle</button>
+                        <button @click="addCircle">Add Circle</button>
+                    </div>
+                </div>
+            </transition>
         </div>
-        <div class="button-delete" v-if="currentFigure">
-            <button @click="deleteFigure">Delete</button>
+        <div class="wrapper-button-delete">
+            <transition name="fade">
+                <div class="button-delete" v-if="currentFigure">
+                    <button @click="deleteFigure">Delete</button>
+                </div>
+            </transition>
         </div>
     </div>
 
@@ -92,7 +101,6 @@
                     }
                     v.$data.currentFigure = this;
                 };
-
                 Rect.prototype = {
                     draw: function () {
                         ctx.fillStyle = this.fillStyle;
@@ -145,7 +153,6 @@
                 this.figures.push(new Circle(400, 300, 120));
             },
             deleteFigure: function () {
-                let i;
                 for (let i = 0; i < this.figures.length; i++) {
                     if (this.figures[i].selected) {
                         this.figures.splice(i, 1);
@@ -153,7 +160,6 @@
                         this.currentFigure = false;
                         break;
                     }
-
                 }
             },
             updateCanvas: function () {
@@ -165,25 +171,20 @@
                 };
                 let selected = false;
 
-
                 let isCursorInRect = function (rect) {
-                    if (rect.figure == 'circle') {
+                    if (rect.figure === 'circle') {
                         return mouse.x > rect.x - rect.r && mouse.x < rect.x + rect.r && mouse.y > rect.y - rect.r && mouse.y < rect.y + rect.r;
                     }
-                    if (rect.figure == 'rectangle') {
+                    if (rect.figure === 'rectangle') {
                         return mouse.x > rect.x && mouse.x < rect.x + rect.w && mouse.y > rect.y && mouse.y < rect.y + rect.h;
                     }
                 };
 
-                let i = 0;
-
                 setInterval(() => {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    for (i in this.figures) {
+                    for (let i in this.figures) {
                         this.figures[i].draw();
-
                         if (this.figures[i].selected) {
-
                             this.figures[i].stroke();
                         }
                     }
@@ -199,11 +200,9 @@
                 };
                 canvas.onmousedown = (e) => {
                     if (!selected) {
-                        let i;
-                        for (i in this.figures) {
+                        for (let i in this.figures) {
                             this.figures[i].draw();
                             this.figures[i].selected = false;
-
                             if (isCursorInRect(this.figures[i])) {
                                 selected = this.figures[i];
                                 this.currentFigure = selected;
@@ -212,10 +211,9 @@
                         }
                     }
                 };
-                canvas.onmouseup = function (e) {
+                canvas.onmouseup = (e) => {
                     selected = false;
                 };
-
             }
         },
         mounted: function () {
