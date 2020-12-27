@@ -31,6 +31,7 @@
         }),
         computed: {
             price() {
+                if ((25 +  this.distance * 4.5 + this.time * 1.15) * this.coefficient<40) return 40;
                 return (25 +  this.distance * 4.5 + this.time * 1.15) * this.coefficient;
 
             }
