@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 1</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/styles.css" rel="stylesheet">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="sample">
+        <div>километраж</div>
+        <input type="text" v-model="distance">
+        <div>время</div>
+        <input type="text" v-model="time">
+        <div>коэфициент</div>
+        <input type="text" v-model="coefficient">
+        <h2>Стоимость: {{ price }}</h2>
+    </div>
+</div>
+<script>
+
+    let app = Vue.createApp({
+        data: () => ({
+            distance: 0,
+            time: 0,
+            coefficient: 0,
+
+        }),
+        computed: {
+            price() {
+                return (25 + this.distance * 4.5 + this.time * 1.15) * this.coefficient;
+
+            }
+        }
+
+    });
+
+    app.mount('.sample');
+
+</script>
+</body>
+</html>
