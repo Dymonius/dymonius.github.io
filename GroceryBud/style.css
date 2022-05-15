@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+body {
+    background-color: #F1F5F8;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 30px;
+    font-size: 20px;
+}
+
+input {
+    border: none;
+    outline: none;
+    font: inherit;
+}
+
+.todo {
+    max-width: 500px;
+    margin: auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.3);
+}
+
+.todo__header {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.todo__input-wrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.todo__input {
+    background-color: #F1F5F8;
+    width: 100%;
+    padding: 10px 20px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.todo__button {
+    padding: 10px 20px;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: #A5D5F8;
+    cursor: pointer;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.todo__list {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.item {
+    display: flex;
+    margin-top: 20px;
+}
+
+.item__text {
+    width: 100%;
+    padding: 10px;
+}
+
+.item__edit {
+    width: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.item__delete {
+    width: 30px;
+    cursor: pointer;
+}
+
+.todo__clear {
+    margin-top: 30px;
+    text-align: center;
+    color: #E66A6A;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
