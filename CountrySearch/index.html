@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="light.css" id="theme-link">
+</head>
+<body>
+
+<div class="header">
+	<div class="header__question">Where in the world?</div>
+	<div class="mode">
+		<img class="mode__icon" src="img/moon.svg" alt="">
+		<div class="mode__text">Dark Mode</div>
+	</div>
+</div>
+<div class="wrapper">
+	<div class="inputs">
+		<div class="search">
+			<img src="img/magnifier.svg" alt="" class="search__icon">
+			<input type="text" class="search__input" placeholder="Search for a country">
+		</div>
+		<div class="filter">
+			<div class="filter__header">Filter by region</div>
+			<div class="filter__list filter__list--display-none">
+				<div class="filter__item">Africa</div>
+				<div class="filter__item">Americas</div>
+				<div class="filter__item">Asia</div>
+				<div class="filter__item">Europe</div>
+				<div class="filter__item">Oceania</div>
+			</div>
+		</div>
+	</div>
+	<div class="cards"></div>
+</div>
+
+</body>
+<script src="script.js"></script>
+</html>

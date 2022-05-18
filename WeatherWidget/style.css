@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+input {
+    border: none;
+    outline: none;
+    font: inherit;
+}
+
+body {
+    background-color: #4299E1;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    padding: 30px;
+}
+
+.wrapper {
+    max-width: 400px;
+    margin: auto;
+}
+
+.search {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.search__input {
+    width: 100%;
+    padding: 10px 20px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.search__button {
+    padding: 10px 20px;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: #1A202C;
+    cursor: pointer;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.card {
+    margin-top: 30px;
+}
+
+.card__header {
+    background-color: #1A202C;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card__temperature {
+    font-size: 30px;
+}
+
+.card__footer {
+    background-color: #2D3747;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #656565;
+}
+
+.card__footer:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.card__forecast-date {
+    max-width: 90px;
+    line-height: 20px;
+}
+
+.card__forecast-weather-icon {
+    width: 50px;
+}
+
+.card__forecast-temperature {
+    min-width: 50px;
+    text-align: right;
+}
