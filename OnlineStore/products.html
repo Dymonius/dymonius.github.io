@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Products</title>
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header header--light">
+	<div class="header__menu-wrapper">
+		<button class="header__menu-button" type="button">
+			<img src="img/menu-hamburger.svg" alt="" class="header__hamburger-icon">
+		</button>
+		<nav class="menu">
+			<a class="menu__item" href="index.html">Home</a>
+			<a class="menu__item" href="products.html">Products</a>
+			<a class="menu__item" href="about.html">About</a>
+		</nav>
+	</div>
+	<img src="img/logo-black.svg" alt="" class="header__logo">
+	<div class="header__cart-wrapper">
+		<img src="img/cart-black.svg" alt="" class="header__cart-logo">
+		<div class="header__cart-counter">0</div>
+	</div>
+</header>
+<section class="navigation">
+	<h3 class="navigation__text">Home / Products</h3>
+</section>
+<section class="products">
+	<aside class="filters">
+		<input type="text" placeholder="Search..." class="search">
+		<div class="companies">
+			<h4 class="companies__header">Company</h4>
+			<div class="companies__items">
+				<div class="companies__item">All</div>
+				<div class="companies__item">Ikea</div>
+				<div class="companies__item">Marcos</div>
+				<div class="companies__item">Caressa</div>
+				<div class="companies__item">Liddy</div>
+			</div>
+		</div>
+		<div class="price">
+			<h4 class="price__header">Price</h4>
+			<input type="range" min="0" max="80" step="1" value="80" class="price__range">
+			<div class="price__value">Value: $80</div>
+		</div>
+	</aside>
+	<section class="cards"></section>
+</section>
+
+<div class="cart-wrapper">
+	<div class="cart">
+		<img src="img/close-cross.svg" alt="" class="card__cross">
+		<h3 class="cart__header">Your Bag</h3>
+		<div class="cart__cards"></div>
+		<div class="cart__total">Total: $159.98</div>
+		<button class="cart__checkout" type="button">CHECKOUT</button>
+	</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

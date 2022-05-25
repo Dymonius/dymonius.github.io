@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Home</title>
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+	<div class="header__menu-wrapper">
+		<button class="header__menu-button" type="button">
+			<img src="img/menu-hamburger.svg" alt="" class="header__hamburger-icon">
+		</button>
+		<nav class="menu">
+			<a class="menu__item" href="index.html">Home</a>
+			<a class="menu__item" href="products.html">Products</a>
+			<a class="menu__item" href="about.html">About</a>
+		</nav>
+	</div>
+
+	<img src="img/logo-white.svg" alt="" class="header__logo">
+	<div class="header__cart-wrapper">
+		<img src="img/cart-white.svg" alt="" class="header__cart-logo">
+		<div class="header__cart-counter">0</div>
+	</div>
+</header>
+<section class="hero">
+	<div class="hero__wrapper">
+		<h1 class="hero__header">Rest, Relax, Unwind</h1>
+		<h3 class="hero__text">Embrace your choices - we do</h3>
+		<a class="hero__button" href="products.html">SHOW NOW</a>
+	</div>
+</section>
+
+<section class="featured">
+
+	<h2 class="featured__header"><span class="featured__slash">/</span>Featured</h2>
+	<section class="cards"></section>
+</section>
+
+<a href="products.html" class="footer-button">ALL PRODUCTS</a>
+
+<div class="cart-wrapper">
+	<div class="cart">
+		<img src="img/close-cross.svg" alt="" class="card__cross">
+		<h3 class="cart__header">Your Bag</h3>
+		<div class="cart__cards"></div>
+		<div class="cart__total">Total: $159.98</div>
+		<button class="cart__checkout" type="button">CHECKOUT</button>
+	</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
