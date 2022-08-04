@@ -26,6 +26,9 @@ h2 {
     text-align: center;
     margin-left: 20px;
 }
+.photo img {
+    width: 150px;
+}
 
 .work-experience{
     margin-left: 25px;
